@@ -1,10 +1,15 @@
-from app.database.sqlalchemy import db
+from app.database.sqlalchemy import sql_alchemy
 
 
-class User(db.Model):
+class User(sql_alchemy.Model):
     __tablename__ = "users"
 
-    id = db.Column('student_id', db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(100), unique=True)
-    password = db.Column(db.String())
+    id = sql_alchemy.Column('student_id', sql_alchemy.Integer, primary_key=True)
+    name = sql_alchemy.Column(sql_alchemy.String(100))
+    email = sql_alchemy.Column(sql_alchemy.String(100), unique=True)
+    password = sql_alchemy.Column(sql_alchemy.String())
+
+    def __init__(self, name: str, email: str, password: str):
+        self.name = name
+        self.email = email
+        self.password = password

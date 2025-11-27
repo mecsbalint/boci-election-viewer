@@ -1,9 +1,11 @@
 from typing import Any
 from flask import Flask
-from app.security import jwt
+from flask_jwt_extended import JWTManager
 
 
 def init_flask_jwt(app: Flask, jwt_secret_key: str):
+
+    jwt = JWTManager()
 
     app.config["JWT_SECRET_KEY"] = jwt_secret_key
     jwt.init_app(app)
